@@ -1,93 +1,133 @@
-# TaskFlow
+<div align="center">
+  <h1>MERN Task Tracker</h1>
+  <p>A modern, full-stack task management application built with the MERN stack, featuring a sleek, responsive UI with drag-and-drop, advanced filtering, and real-time updates.</p>
+</div>
 
-A production-grade Task Tracker built with the MERN stack. Create, manage, and track tasks with priority levels, due dates, filtering, sorting, and real-time updates.
+<br />
 
-## Tech Stack
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#-about-the-project">About The Project</a></li>
+    <li><a href="#-features">Features</a></li>
+    <li><a href="#-built-with">Built With</a></li>
+    <li><a href="#-getting-started">Getting Started</a></li>
+    <li><a href="#-available-scripts">Available Scripts</a></li>
+    <li><a href="#-api-endpoints">API Endpoints</a></li>
+    <li><a href="#-license">License</a></li>
+  </ol>
+</details>
 
-- Frontend: React.js (Vite), Tailwind CSS, Axios
-- Backend: Node.js, Express.js
-- Database: MongoDB + Mongoose
+---
 
-## Features
+## ✨ About The Project
 
-### Mandatory
+This is a feature-rich, production-ready task tracker designed to demonstrate a modern full-stack web development workflow. It provides a seamless and intuitive user experience for managing tasks, with a powerful backend to support filtering, sorting, and data persistence.
 
-- Full CRUD: Create, view, edit, and delete tasks
-- Form validation with inline errors
-- REST API with proper status codes
-- MongoDB integration via Mongoose
-- Responsive layout for mobile, tablet, and desktop
-- Dynamic updates without page refresh
+The frontend is built with React and Vite, styled with Tailwind CSS, and animated with Framer Motion. The backend is a robust Node.js and Express server connected to a MongoDB database via Mongoose.
 
-### Bonus
+## 🚀 Features
 
-- Filter by status and priority
-- Sort by created date, due date, logical priority, and title
-- Ascending and descending sort order
-- Overdue badge for past-due incomplete tasks
-- Empty state when no tasks match filters
-- Shimmer skeleton loading cards
-- Toast notifications for all operations
-- Status quick-toggle by clicking the badge
-- Character counter on the title input
-- Accurate task count badges on status filter pills
-- Search, categories, subtasks, archiving, insights, and drag-and-drop ordering
+- **Full CRUD Functionality**: Create, Read, Update, and Delete tasks.
+- **Drag & Drop**: Intuitively reorder tasks within the list.
+- **Advanced Filtering**: Filter tasks by status, priority, and category.
+- **Dynamic Sorting**: Sort tasks by creation date, due date, or priority.
+- **Subtask Management**: Add and toggle the completion status of subtasks within a main task.
+- **Task Archiving**: Archive completed tasks to keep the main view clean.
+- **Dashboard Insights**: View a chart of completed tasks over the last 7 days.
+- **Command Palette**: Quickly access actions like creating a new task using `Ctrl/Cmd + K`.
+- **Keyboard Shortcuts**: Use shortcuts like `N` to open the new task form.
+- **Responsive Design**: A seamless experience on both desktop and mobile devices.
+- **Real-time Feedback**: Toast notifications for all user actions.
 
-## Local Setup
+## 🛠️ Built With
+
+This project is built with a modern, robust tech stack:
+
+*   **Frontend:**
+    *   React
+    *   Vite
+    *   Tailwind CSS
+    *   Framer Motion for animations
+    *   dnd-kit for drag and drop
+    *   Recharts for data visualization
+    *   Axios for API requests
+*   **Backend:**
+    *   Node.js
+    *   Express.js
+*   **Database:**
+    *   MongoDB
+    *   Mongoose
+*   **Development:**
+    *   TypeScript
+    *   tsx for running the TypeScript server in development
+
+## 🏁 Getting Started
+
+Follow these steps to get a local copy up and running.
 
 ### Prerequisites
 
-- Node.js 18+
-- MongoDB Atlas account (free tier works)
+*   **Node.js**: v18.0.0 or higher
+*   **npm**: v8.0.0 or higher
+*   **MongoDB**: A running instance of MongoDB. You can use a local installation or a cloud service like MongoDB Atlas.
 
 ### Installation
 
-```bash
-# Clone the repo
-git clone https://github.com/your-username/task-tracker.git
-cd task-tracker
+1.  **Clone the repository:**
+    ```sh
+    git clone https://github.com/your-username/your-repo-name.git
+    cd your-repo-name
+    ```
 
-# Install dependencies
-npm install
+2.  **Install dependencies:**
+    ```sh
+    npm install
+    ```
 
-# Set up environment variables
-cp .env.example .env
-# Open .env and fill in your MONGO_URI
-```
+3.  **Set up environment variables:**
+    Create a `.env` file in the root of the project by copying the example file:
+    ```sh
+    cp .env.example .env
+    ```
+    Open the `.env` file and add your MongoDB connection string:
+    ```
+    MONGO_URI=your_mongodb_connection_string
+    ```
 
-### Running Locally
+4.  **Seed the database (optional):**
+    To populate the database with realistic sample data, run the seed script:
+    ```sh
+    npm run seed
+    ```
 
-```bash
-# Development (frontend + backend together)
-npm run dev
+5.  **Run the development server:**
+    This command starts both the frontend and backend servers concurrently.
+    ```sh
+    npm run dev
+    ```
+    The application will be available at `http://localhost:3000`.
 
-# Production build
-npm run build
-npm start
-```
+## 📜 Available Scripts
 
-### Environment Variables
+- `npm run dev`: Starts the development server for both frontend and backend.
+- `npm run build`: Builds the application for production.
+- `npm run start`: Starts the production server (after running `build`).
+- `npm run seed`: Clears and seeds the database with sample tasks.
+- `npm run lint`: Lints the TypeScript files for errors.
 
-| Variable | Where | Description |
-|----------|-------|-------------|
-| `MONGO_URI` | `.env` | MongoDB Atlas connection string |
-| `PORT` | `.env` | Server port (default: 5000) |
-| `VITE_API_URL` | `.env` | Backend public URL (production only) |
-| `CLIENT_URL` | `.env` | Frontend public URL (for CORS) |
+## 🔑 API Endpoints
 
-Never commit a populated `.env` file or database credentials.
+| Method | Endpoint                 | Description                               |
+| :----- | :----------------------- | :---------------------------------------- |
+| `GET`  | `/api/tasks`             | Get all tasks with optional query filters |
+| `GET`  | `/api/insights`          | Get task completion data for the last 7 days |
+| `POST` | `/api/tasks`             | Create a new task                         |
+| `PUT`  | `/api/tasks/:id`         | Update an existing task                   |
+| `DELETE`| `/api/tasks/:id`        | Delete a task                             |
+| `PATCH`| `/api/tasks/:id/status`  | Update the status of a task               |
 
-## API Endpoints
+## 📄 License
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/api/tasks` | Fetch tasks with optional filters and sorting |
-| `POST` | `/api/tasks` | Create a task |
-| `PUT` | `/api/tasks/:id` | Update a task |
-| `DELETE` | `/api/tasks/:id` | Delete a task |
-| `PATCH` | `/api/tasks/:id/status` | Update task status |
-
-## Deployed Links
-
-- Frontend: [Add Vercel URL here]
-- Backend: [Add Render URL here]
+Distributed under the Apache-2.0 License. See `LICENSE` for more information.

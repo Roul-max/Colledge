@@ -175,9 +175,6 @@ export default function App() {
                 <span className="w-1.5 h-1.5 rounded-full bg-success"></span>
                 System Operational
               </span>
-              <span className="inline-flex items-center px-2.5 py-1 rounded-md border border-white/10 bg-surface/50 text-[10px] font-bold tracking-wider text-text-muted uppercase shadow-sm">
-                SOC 2 Type II
-              </span>
             </div>
             <h2 className="text-3xl md:text-4xl font-display font-semibold tracking-tight text-white mb-3">
               Your Workspace
