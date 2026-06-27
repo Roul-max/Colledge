@@ -114,23 +114,14 @@ export const getInsights = async (req, res, next) => {
 };
 
 export const createTask = async (req, res, next) => {
-  console.log("=== CREATE TASK CALLED ===");
-  console.log("Request body:", JSON.stringify(req.body, null, 2));
-  console.log("Request headers:", req.headers);
-
   try {
     const { title, description, status, priority, dueDate, category, subtasks } = req.body;
 
-    console.log("Extracted fields:", { title, description, status, priority, dueDate, category });
-    
     if (typeof title !== 'string' || !title.trim()) {
-      console.log("VALIDATION FAIL: title is missing or whitespace");
       return res.status(400).json({ message: 'Title is required' });
     }
 
     validateTaskEnums({ status, priority });
-
-    console.log("Validation passed. Creating task...");
     
     const task = new Task({
       title: title.trim(),
@@ -141,18 +132,10 @@ export const createTask = async (req, res, next) => {
       category,
       subtasks: subtasks || []
     });
-
-    console.log("Task object before save:", JSON.stringify(task, null, 2));
     
     const createdTask = await task.save();
-    console.log("Task saved successfully:", createdTask._id);
     res.status(201).json(createdTask);
   } catch (err) {
-    console.error("=== CREATE TASK ERROR ===");
-    console.error("Error name:", err.name);
-    console.error("Error message:", err.message);
-    console.error("Error code:", err.code);
-    console.error("Full error:", err);
     next(err);
   }
 };
