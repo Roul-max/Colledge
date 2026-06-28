@@ -29,9 +29,7 @@ export const useTasks = () => {
         filters.archived ? Promise.resolve([]) : api.fetchInsights()
       ]);
 
-      console.log('filteredTasks:', filteredTasks);
-      console.log('countTasks:', countTasks);
-      console.log('insightsData:', insightsData);
+      
 
       const normalizedTasks = Array.isArray(filteredTasks)
         ? filteredTasks
